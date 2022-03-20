@@ -1,0 +1,7 @@
+*.DS_Store
+*.pyc
+.cmd
+.idea
+.vscode
+env
+env.py
