@@ -6,79 +6,23 @@ Hold down to kill program when running!
 """
 import keyboard
 import pyautogui
-import random
 import time
-
-click_locations = [
-    {
-        "name": "Cursor",
-        "x": 1722,
-        "y": 325,
-    }, {
-        "name": "Grandma",
-        "x": 1722,
-        "y": 390,
-    }, {
-        "name": "Farm",
-        "x": 1722,
-        "y": 456,
-    }, {
-        "name": "Mine",
-        "x": 1722,
-        "y": 522,
-    }, {
-        "name": "Factory",
-        "x": 1722,
-        "y": 585,
-    }, {
-        "name": "Bank",
-        "x": 1722,
-        "y": 650,
-    }, {
-        "name": "Temple",
-        "x": 1722,
-        "y": 717,
-    }, {
-        "name": "Wizard Tower",
-        "x": 1722,
-        "y": 775,
-    }, {
-        "name": "Shipment",
-        "x": 1722,
-        "y": 840,
-    }, {
-        "name": "Alchemy lab",
-        "x": 1722,
-        "y": 902,
-    }, {
-        "name": "Portal",
-        "x": 1722,
-        "y": 925,
-    }, {
-        "name": "Time Machines",
-        "x": 1722,
-        "y": 1032,
-    }, {
-        "name": "Store",
-        "x": 1632,
-        "y": 216,
-    },
-]
+from bot import CookieBot
 
 running = True
 upgrade_count = 1
-upgrade_limit = 1000
+upgrade_limit = 50000
 
-time.sleep(5)
+bot = CookieBot()
 
+bot.find_click_special_cookie()
 while running:
-
-    pyautogui.click(random.randint(200, 380), random.randint(400, 580))
+    bot.click_cookie()
 
     if upgrade_count % upgrade_limit == 0:
         print("Upgrading Stuff")
         upgrade_count = 0
-        for location in click_locations[::-1]:
+        for location in bot.active_locations:
             pyautogui.click(location["x"], location["y"])
             time.sleep(.5)
     elif upgrade_count % 100 == 0:
