@@ -46,6 +46,8 @@ class CookieBot():
             }, {
                 "name": "Time",
             }, {
+                "name": "Anti",
+            },{
                 "name": "Store",
             },
         ]
@@ -86,7 +88,7 @@ class CookieBot():
         return False
 
     def find_click_special_cookie(self):
-        location = find_locations(self.special_cookie["name"], .5, True)
+        location = find_locations(self.special_cookie["name"], .5)
         print(f"{location}HEY")
         if location is not None:
             self.special_cookie["location"] = location
